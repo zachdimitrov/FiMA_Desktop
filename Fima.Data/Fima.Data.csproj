@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4C7EFD8-5E3A-458E-82A5-2CC85C10075A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Fima.Data</RootNamespace>
+    <AssemblyName>Fima.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACCOUNTINGTABLE_FORMATED.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACCOUNTING_ENTRIES_ALL.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACC_MOVE_PERIOD.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ACC_MOVE_PERIOD_2.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="acc_test.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANKS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_ACCOUNTS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_ACCOUNTS_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BANK_ACCOUNT_TYPES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BETA_CALC.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_BEGIN.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_BEGIN_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_END.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_CT1.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_CT1_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_DT1.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_DT1_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_Fct.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_FDT.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_FID.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_FORMATED.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGTABLE_PERIOD_FSUM.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIGACCOUNTINGYABLE_PERIOD_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIG_ACCOUNTING_TABLE.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIG_ACCOUNTING_TABLE_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIG_ACCOUNTING_TABLE_ANYFUND_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIG_ACCOUNTING_TABLE_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIG_ACCOUNTING_TABLE_kur.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BIG_ACCOUNTING_TABLE_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BNB_CCY.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BNB_COUNTRY.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BNB_MARKETS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BNB_SECTOR.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BNB_TYPE.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BRANCH_BG.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BROKERS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BULLETIN_BFB.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BULLETIN_USA.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CALENDAR.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CD_MESSAGES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CD_MESSAGES_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CD_TEXT_MESSAGES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CD_TEXT_MESSAGES_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CE_EVENT_TYPES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CONTRACTED_PARTIES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACTS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contracts_kcm.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contracts_kcm_readable.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contracts_schroders.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contracts_schroders_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="contracts_schroders_readable.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CORPORATE_EVENTS_ALLFUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="COUNTRIES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CURRENCIES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYPRICES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYPRICESLIMITED_POSITIONS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAILYPRICES_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DATAUD_AVRORA.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbo_BIGACCOUNTINGTABLE_SUMMARYPORTFOLIO.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbo_BIGACCOUNTINGTABLE_SUMMARYPORTFOLIO_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbo_BIG_SUMMARY_PORTFOLIO_RES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dbo_DAILYPRICES_POSITIONS_BFBONLY.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db_beta.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEFERRED_EXPENSES_COUNTERPARTIES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPOSITS_ALLFUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPOSITS_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DEPOSIT_CONVENTIONS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DE_EXPENSES_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DP_LIMITED.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ec_groups.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FMModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FMModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FORWARD_CONTRACTS_ALLFUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FORWARD_CONTRACTS_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GENERAL_LEDGER.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTMENT_TYPES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS2.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORSDEALS_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORSORDERS_ANYFUND2.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_AUTH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_DEALS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_DEALS_FORMATED.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_DEALS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_DEALS_SCHRODERS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_DEALS_SCHRODERS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_FUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTORS_FUNDS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTOR_AUTH2.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INVESTOR_TRANSFERS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MAX_DATE_REVAL.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MAX_DATE_REVAL_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MONEYTRANSFER_TYPE.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MUNICIPALITY.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NAV_CALCULATION_ALLFUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NAV_FUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NOM_BANKS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERS_INPUT.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERS_INPUT_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERS_INPUT_SCHRODERS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERS_INPUT_SCHRODERS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORDERS_OPERATIONS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ORGANIZATIONS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PENDINGORDERS_INVESTORS2.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIODEALS_ANYFUND.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIOOPERATIONS_TYPE.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIOORDERS_TYPE.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_DEALS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_DEALS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_ORDERS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_ORDERS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_SUMMARY_FUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_SUMMARY_FUNDS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_SUMMARY_FUNDS_SCH.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PORTFOLIO_SUMMARY_FUNDS_SCH_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSITIONS_INVESTMENTS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSITION_BONDS_INTEREST_1.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSITION_INVESTMENTS_BONDS_ONLY.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESERVE_SUMMARY.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RM_PRICES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RM_PRICES_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="schroders_orders_readable.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SCHRODERS_ORDERS_WITHTIME.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sch_orders_active.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getaccbnd2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getaccbnd_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getacccash2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getacccash_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getacccy_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getaccnm2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getaccnm3_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getaccnm4_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getaccnm_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getassetvalue2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getassetvalue_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getbnbcountry_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getbnbmarket_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getbnbsector_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getbnbtype_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getbrancheng_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getbranch_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcashacc_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcdclient_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcdcountry_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcdmunicipality_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getclient2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getclient3_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getclient_cd_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getclient_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getconventions_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcp2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcp3_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcp_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getcurrencies_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getdepconvdet_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getecgroups_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundcdid2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundcdid_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundisin2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundisin_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundname2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundname_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfundsschroders_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getfunds_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getinvdeal_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getinvdeal_schroders2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getinvdeal_schroders_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getinvegn_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getinvtypes_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getkcmcontract_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getledgeracc_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_cash_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_corp_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_defexp_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_der_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_free_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_fxfreval_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_intbnd_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_int_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_invdeals_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_invdeals_sch_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_ordinv_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_pfreval_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_pfreval_sch_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_portdeals_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_portdeals_sch_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_sd_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_udbd_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxacc_zapl_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxcd_acc_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxcd_cl_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxcd_dn_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxcd_tr_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxdatereval_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxdatereval_sch_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxdeal_schroders_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxinvdeal_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxord_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxord_schroders_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxpdeal_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxpord_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getmaxvn_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getonenav_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getorder_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getorder_schroders_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getpdeal_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getpendtrades_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getporder_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getposdetails_advance_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getposdetails_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getposdetails_schroders_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getpositions_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getschavgproces_2_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getschavgproces_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getschroderscontract_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_getud_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_schroders_getmaxdealid_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_schroders_ordersget_Result.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUMARY_NAV_FUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SUMARY_NAV_FUNDS_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST_CD_MESSAGES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST_CD_TEXT_MESSAGES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEST_PRICES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOWNS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TYPES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UD_FUNDS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UD_FUNDS_schroders.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNMATCHED_ACCOUNT_MESSAGES.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UNMATCHED_CD_REGISTER_TRANSACTIONS.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usd_histrates.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VN.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VN_HIST.cs">
+      <DependentUpon>FMModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="FMModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FMModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="FMModel.edmx.diagram">
+      <DependentUpon>FMModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FMModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FMModel.Context.cs</LastGenOutput>
+      <DependentUpon>FMModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="FMModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FMModel.edmx</DependentUpon>
+      <LastGenOutput>FMModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

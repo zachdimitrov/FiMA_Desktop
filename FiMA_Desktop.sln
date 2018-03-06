@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fima.Data", "Fima.Data\Fima.Data.csproj", "{B4C7EFD8-5E3A-458E-82A5-2CC85C10075A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiMA.FrontOffice", "FiMA.FrontOffice\FiMA.FrontOffice.csproj", "{BFCB1671-246E-4299-867A-208BAD5914AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4C7EFD8-5E3A-458E-82A5-2CC85C10075A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C7EFD8-5E3A-458E-82A5-2CC85C10075A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C7EFD8-5E3A-458E-82A5-2CC85C10075A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C7EFD8-5E3A-458E-82A5-2CC85C10075A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFCB1671-246E-4299-867A-208BAD5914AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFCB1671-246E-4299-867A-208BAD5914AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFCB1671-246E-4299-867A-208BAD5914AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFCB1671-246E-4299-867A-208BAD5914AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63ED034E-F5D4-426A-BA80-C064A3C27FFF}
+	EndGlobalSection
+EndGlobal
