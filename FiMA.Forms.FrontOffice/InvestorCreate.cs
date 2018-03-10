@@ -18,5 +18,25 @@ namespace FiMA.Forms.FrontOffice
         {
             this.dataGrid.DataSource = _investorsFundsRepo.GetAll();
         }
+
+        private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void tabPerson_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
