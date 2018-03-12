@@ -35,7 +35,6 @@ namespace FiMA.Forms.FrontOffice
         /// </summary>
         private void InvestorCreate_Load(object sender, System.EventArgs e)
         {
-            this.dataGrid.DataSource = _investorsFundsRepo.GetAll();
             this.comboTypePerson.DataSource = _typesRepo.GetAll<string>(null, x => x.TYPE);
             this.comboEmployee.DataSource = new List<string>() { "СЛУЖИТЕЛ", "ПЪЛНОМОЩНИК", "НЕПРИЛОЖИМО" };
             this.comboRegisterCd.DataSource = new List<string>() { "ДА", "НЕ" };
@@ -46,6 +45,20 @@ namespace FiMA.Forms.FrontOffice
             this.comboPersTown.DataSource = _townsRepo.GetAll<string>(null, x=>x.TOWNNAME);
             this.comboPersMunic.DataSource = _municRepo.GetAll<string>(null, x=>x.MUNICIPALITY1);
             this.comboMailMunic.DataSource = _municRepo.GetAll<string>(null, x=>x.MUNICIPALITY1);
+
+            this.buttonClientDelete.Visible = false;
         }
+
+        private void btnClientSearch_Click(object sender, System.EventArgs e)
+        {
+            // check if Id is correct
+            // check if Type Person selected
+            // check if Employee or Attorney selected
+            // find all occurancies and load to table, show a message that record exist
+        }
+
+        // when row clicked load data to fields
+        // hide tabs based on person type
+        // show client number and status if existing
     }
 }

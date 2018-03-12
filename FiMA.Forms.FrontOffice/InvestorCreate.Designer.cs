@@ -1384,6 +1384,7 @@
             this.btnClientSearch.TabIndex = 2;
             this.btnClientSearch.Text = "ТЪРСИ";
             this.btnClientSearch.UseVisualStyleBackColor = true;
+            this.btnClientSearch.Click += new System.EventHandler(this.btnClientSearch_Click);
             // 
             // textClientId
             // 
