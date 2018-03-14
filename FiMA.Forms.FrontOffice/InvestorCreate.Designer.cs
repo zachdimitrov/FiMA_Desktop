@@ -28,14 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvestorCreate));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGrid = new System.Windows.Forms.DataGridView();
+            this.columnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlClientData = new System.Windows.Forms.TabControl();
             this.tabPerson = new System.Windows.Forms.TabPage();
             this.dateTimePassportIssued = new System.Windows.Forms.DateTimePicker();
             this.dateTimeBirthDate = new System.Windows.Forms.DateTimePicker();
-            this.textFamily = new System.Windows.Forms.TextBox();
+            this.textFamilyName = new System.Windows.Forms.TextBox();
             this.textMiddleName = new System.Windows.Forms.TextBox();
             this.textPassportIssued = new System.Windows.Forms.TextBox();
             this.textPassportNumber = new System.Windows.Forms.TextBox();
@@ -52,7 +59,7 @@
             this.tabFirm = new System.Windows.Forms.TabPage();
             this.textCompanyTaxId = new System.Windows.Forms.TextBox();
             this.textCompanyName = new System.Windows.Forms.TextBox();
-            this.comboCompanyType = new System.Windows.Forms.ComboBox();
+            this.comboOrgType = new System.Windows.Forms.ComboBox();
             this.labelCompanyType = new System.Windows.Forms.Label();
             this.comboDds = new System.Windows.Forms.ComboBox();
             this.labelCompanyDds = new System.Windows.Forms.Label();
@@ -154,6 +161,7 @@
             this.labelEntityType = new System.Windows.Forms.Label();
             this.textId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
+            this.buttonClientSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.tabControlClientData.SuspendLayout();
@@ -179,19 +187,71 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 210F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.60121F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.39879F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(834, 872);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.28389F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.71611F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(859, 633);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGrid
             // 
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnId,
+            this.clientString,
+            this.id,
+            this.firstName,
+            this.lastName,
+            this.fullName});
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGrid.Location = new System.Drawing.Point(3, 687);
+            this.dataGrid.Location = new System.Drawing.Point(3, 548);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(828, 182);
+            this.dataGrid.Size = new System.Drawing.Size(853, 82);
             this.dataGrid.TabIndex = 0;
+            this.dataGrid.DoubleClick += new System.EventHandler(this.dataGrid_DoubleClick);
+            // 
+            // columnId
+            // 
+            this.columnId.DataPropertyName = "columnId";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.columnId.DefaultCellStyle = dataGridViewCellStyle1;
+            this.columnId.HeaderText = "Номер";
+            this.columnId.Name = "columnId";
+            this.columnId.Width = 60;
+            // 
+            // clientString
+            // 
+            this.clientString.DataPropertyName = "clientString";
+            this.clientString.HeaderText = "Идентификатор";
+            this.clientString.Name = "clientString";
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ЕГН / Булстат";
+            this.id.Name = "id";
+            this.id.Width = 120;
+            // 
+            // firstName
+            // 
+            this.firstName.DataPropertyName = "firstName";
+            this.firstName.HeaderText = "Име";
+            this.firstName.Name = "firstName";
+            this.firstName.Width = 200;
+            // 
+            // lastName
+            // 
+            this.lastName.DataPropertyName = "lastName";
+            this.lastName.HeaderText = "Фамилия";
+            this.lastName.Name = "lastName";
+            this.lastName.Width = 200;
+            // 
+            // fullName
+            // 
+            this.fullName.DataPropertyName = "fullName";
+            this.fullName.HeaderText = "Наименование";
+            this.fullName.Name = "fullName";
+            this.fullName.Width = 200;
             // 
             // tabControlClientData
             // 
@@ -207,14 +267,14 @@
             this.tabControlClientData.Location = new System.Drawing.Point(3, 213);
             this.tabControlClientData.Name = "tabControlClientData";
             this.tabControlClientData.SelectedIndex = 0;
-            this.tabControlClientData.Size = new System.Drawing.Size(828, 468);
+            this.tabControlClientData.Size = new System.Drawing.Size(853, 329);
             this.tabControlClientData.TabIndex = 1;
             // 
             // tabPerson
             // 
             this.tabPerson.Controls.Add(this.dateTimePassportIssued);
             this.tabPerson.Controls.Add(this.dateTimeBirthDate);
-            this.tabPerson.Controls.Add(this.textFamily);
+            this.tabPerson.Controls.Add(this.textFamilyName);
             this.tabPerson.Controls.Add(this.textMiddleName);
             this.tabPerson.Controls.Add(this.textPassportIssued);
             this.tabPerson.Controls.Add(this.textPassportNumber);
@@ -231,7 +291,7 @@
             this.tabPerson.Location = new System.Drawing.Point(4, 25);
             this.tabPerson.Name = "tabPerson";
             this.tabPerson.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPerson.Size = new System.Drawing.Size(820, 439);
+            this.tabPerson.Size = new System.Drawing.Size(824, 275);
             this.tabPerson.TabIndex = 0;
             this.tabPerson.Text = "Физическо лице";
             this.tabPerson.UseVisualStyleBackColor = true;
@@ -262,13 +322,13 @@
             this.dateTimeBirthDate.Size = new System.Drawing.Size(167, 24);
             this.dateTimeBirthDate.TabIndex = 2;
             // 
-            // textFamily
+            // textFamilyName
             // 
-            this.textFamily.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textFamily.Location = new System.Drawing.Point(558, 46);
-            this.textFamily.Name = "textFamily";
-            this.textFamily.Size = new System.Drawing.Size(167, 24);
-            this.textFamily.TabIndex = 1;
+            this.textFamilyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textFamilyName.Location = new System.Drawing.Point(558, 46);
+            this.textFamilyName.Name = "textFamilyName";
+            this.textFamilyName.Size = new System.Drawing.Size(167, 24);
+            this.textFamilyName.TabIndex = 1;
             // 
             // textMiddleName
             // 
@@ -396,7 +456,7 @@
             // 
             this.tabFirm.Controls.Add(this.textCompanyTaxId);
             this.tabFirm.Controls.Add(this.textCompanyName);
-            this.tabFirm.Controls.Add(this.comboCompanyType);
+            this.tabFirm.Controls.Add(this.comboOrgType);
             this.tabFirm.Controls.Add(this.labelCompanyType);
             this.tabFirm.Controls.Add(this.comboDds);
             this.tabFirm.Controls.Add(this.labelCompanyDds);
@@ -406,7 +466,7 @@
             this.tabFirm.Location = new System.Drawing.Point(4, 25);
             this.tabFirm.Name = "tabFirm";
             this.tabFirm.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFirm.Size = new System.Drawing.Size(820, 439);
+            this.tabFirm.Size = new System.Drawing.Size(824, 275);
             this.tabFirm.TabIndex = 1;
             this.tabFirm.Text = "Юридическо лице";
             this.tabFirm.UseVisualStyleBackColor = true;
@@ -427,14 +487,14 @@
             this.textCompanyName.Size = new System.Drawing.Size(327, 24);
             this.textCompanyName.TabIndex = 16;
             // 
-            // comboCompanyType
+            // comboOrgType
             // 
-            this.comboCompanyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboCompanyType.FormattingEnabled = true;
-            this.comboCompanyType.Location = new System.Drawing.Point(187, 168);
-            this.comboCompanyType.Name = "comboCompanyType";
-            this.comboCompanyType.Size = new System.Drawing.Size(167, 24);
-            this.comboCompanyType.TabIndex = 3;
+            this.comboOrgType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboOrgType.FormattingEnabled = true;
+            this.comboOrgType.Location = new System.Drawing.Point(187, 168);
+            this.comboOrgType.Name = "comboOrgType";
+            this.comboOrgType.Size = new System.Drawing.Size(167, 24);
+            this.comboOrgType.TabIndex = 3;
             // 
             // labelCompanyType
             // 
@@ -527,7 +587,7 @@
             this.tabAddress.Location = new System.Drawing.Point(4, 25);
             this.tabAddress.Name = "tabAddress";
             this.tabAddress.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAddress.Size = new System.Drawing.Size(820, 439);
+            this.tabAddress.Size = new System.Drawing.Size(845, 300);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Адрес";
             this.tabAddress.UseVisualStyleBackColor = true;
@@ -807,7 +867,7 @@
             this.tabAttorneys.Location = new System.Drawing.Point(4, 25);
             this.tabAttorneys.Name = "tabAttorneys";
             this.tabAttorneys.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttorneys.Size = new System.Drawing.Size(820, 439);
+            this.tabAttorneys.Size = new System.Drawing.Size(824, 275);
             this.tabAttorneys.TabIndex = 3;
             this.tabAttorneys.Text = "Пълномощници";
             this.tabAttorneys.UseVisualStyleBackColor = true;
@@ -912,7 +972,7 @@
             this.tabBankAccounts.Location = new System.Drawing.Point(4, 25);
             this.tabBankAccounts.Name = "tabBankAccounts";
             this.tabBankAccounts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBankAccounts.Size = new System.Drawing.Size(820, 439);
+            this.tabBankAccounts.Size = new System.Drawing.Size(824, 275);
             this.tabBankAccounts.TabIndex = 4;
             this.tabBankAccounts.Text = "Банкови сметки";
             this.tabBankAccounts.UseVisualStyleBackColor = true;
@@ -1124,7 +1184,7 @@
             this.tabExtraData.Location = new System.Drawing.Point(4, 25);
             this.tabExtraData.Name = "tabExtraData";
             this.tabExtraData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExtraData.Size = new System.Drawing.Size(820, 439);
+            this.tabExtraData.Size = new System.Drawing.Size(824, 275);
             this.tabExtraData.TabIndex = 5;
             this.tabExtraData.Text = "Допълнителни данни";
             this.tabExtraData.UseVisualStyleBackColor = true;
@@ -1233,7 +1293,7 @@
             this.tabAttorney.Location = new System.Drawing.Point(4, 25);
             this.tabAttorney.Name = "tabAttorney";
             this.tabAttorney.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttorney.Size = new System.Drawing.Size(820, 439);
+            this.tabAttorney.Size = new System.Drawing.Size(824, 275);
             this.tabAttorney.TabIndex = 6;
             this.tabAttorney.Text = "Пълномощник";
             this.tabAttorney.UseVisualStyleBackColor = true;
@@ -1321,6 +1381,7 @@
             this.labelBankAcc3.Controls.Add(this.comboEmployee);
             this.labelBankAcc3.Controls.Add(this.comboRegisterCd);
             this.labelBankAcc3.Controls.Add(this.buttonClientDelete);
+            this.labelBankAcc3.Controls.Add(this.buttonClientSave);
             this.labelBankAcc3.Controls.Add(this.btnClientSearch);
             this.labelBankAcc3.Controls.Add(this.textClientId);
             this.labelBankAcc3.Controls.Add(this.labelClientId);
@@ -1334,7 +1395,7 @@
             this.labelBankAcc3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelBankAcc3.Location = new System.Drawing.Point(3, 3);
             this.labelBankAcc3.Name = "labelBankAcc3";
-            this.labelBankAcc3.Size = new System.Drawing.Size(828, 204);
+            this.labelBankAcc3.Size = new System.Drawing.Size(853, 204);
             this.labelBankAcc3.TabIndex = 2;
             // 
             // comboTypePerson
@@ -1368,9 +1429,9 @@
             // 
             this.buttonClientDelete.BackColor = System.Drawing.Color.LightSalmon;
             this.buttonClientDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonClientDelete.Location = new System.Drawing.Point(687, 14);
+            this.buttonClientDelete.Location = new System.Drawing.Point(572, 137);
             this.buttonClientDelete.Name = "buttonClientDelete";
-            this.buttonClientDelete.Size = new System.Drawing.Size(100, 54);
+            this.buttonClientDelete.Size = new System.Drawing.Size(100, 51);
             this.buttonClientDelete.TabIndex = 2;
             this.buttonClientDelete.Text = "ИЗТРИЙ";
             this.buttonClientDelete.UseVisualStyleBackColor = false;
@@ -1380,7 +1441,7 @@
             this.btnClientSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnClientSearch.Location = new System.Drawing.Point(572, 14);
             this.btnClientSearch.Name = "btnClientSearch";
-            this.btnClientSearch.Size = new System.Drawing.Size(100, 54);
+            this.btnClientSearch.Size = new System.Drawing.Size(100, 47);
             this.btnClientSearch.TabIndex = 2;
             this.btnClientSearch.Text = "ТЪРСИ";
             this.btnClientSearch.UseVisualStyleBackColor = true;
@@ -1473,11 +1534,22 @@
             this.labelId.TabIndex = 0;
             this.labelId.Text = "ЕГН / ЕИК";
             // 
+            // buttonClientSave
+            // 
+            this.buttonClientSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonClientSave.Location = new System.Drawing.Point(572, 75);
+            this.buttonClientSave.Name = "buttonClientSave";
+            this.buttonClientSave.Size = new System.Drawing.Size(100, 47);
+            this.buttonClientSave.TabIndex = 2;
+            this.buttonClientSave.Text = "ЗАПАЗИ";
+            this.buttonClientSave.UseVisualStyleBackColor = true;
+            this.buttonClientSave.Click += new System.EventHandler(this.btnClientSearch_Click);
+            // 
             // InvestorCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 872);
+            this.ClientSize = new System.Drawing.Size(859, 633);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InvestorCreate";
@@ -1535,7 +1607,7 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.DateTimePicker dateTimePassportIssued;
         private System.Windows.Forms.DateTimePicker dateTimeBirthDate;
-        private System.Windows.Forms.TextBox textFamily;
+        private System.Windows.Forms.TextBox textFamilyName;
         private System.Windows.Forms.TextBox textPassportIssued;
         private System.Windows.Forms.TextBox textFirstName;
         private System.Windows.Forms.Label labelFamily;
@@ -1550,7 +1622,7 @@
         private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textCompanyTaxId;
-        private System.Windows.Forms.ComboBox comboCompanyType;
+        private System.Windows.Forms.ComboBox comboOrgType;
         private System.Windows.Forms.Label labelCompanyType;
         private System.Windows.Forms.ComboBox comboDds;
         internal System.Windows.Forms.TextBox textPersFloor;
@@ -1632,6 +1704,13 @@
         private System.Windows.Forms.TextBox textClientId;
         private System.Windows.Forms.Label labelClientId;
         private System.Windows.Forms.Button buttonClientDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientString;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullName;
+        private System.Windows.Forms.Button buttonClientSave;
     }
 }
 
