@@ -151,6 +151,7 @@
             this.comboEmployee = new System.Windows.Forms.ComboBox();
             this.comboRegisterCd = new System.Windows.Forms.ComboBox();
             this.buttonClientDelete = new System.Windows.Forms.Button();
+            this.buttonClientSave = new System.Windows.Forms.Button();
             this.btnClientSearch = new System.Windows.Forms.Button();
             this.textClientId = new System.Windows.Forms.TextBox();
             this.labelClientId = new System.Windows.Forms.Label();
@@ -161,7 +162,6 @@
             this.labelEntityType = new System.Windows.Forms.Label();
             this.textId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
-            this.buttonClientSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.tabControlClientData.SuspendLayout();
@@ -187,8 +187,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 210F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.28389F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.71611F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65.95744F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.04255F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(859, 633);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -203,9 +203,9 @@
             this.lastName,
             this.fullName});
             this.dataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGrid.Location = new System.Drawing.Point(3, 548);
+            this.dataGrid.Location = new System.Drawing.Point(3, 492);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(853, 82);
+            this.dataGrid.Size = new System.Drawing.Size(853, 138);
             this.dataGrid.TabIndex = 0;
             this.dataGrid.DoubleClick += new System.EventHandler(this.dataGrid_DoubleClick);
             // 
@@ -267,7 +267,7 @@
             this.tabControlClientData.Location = new System.Drawing.Point(3, 213);
             this.tabControlClientData.Name = "tabControlClientData";
             this.tabControlClientData.SelectedIndex = 0;
-            this.tabControlClientData.Size = new System.Drawing.Size(853, 329);
+            this.tabControlClientData.Size = new System.Drawing.Size(853, 273);
             this.tabControlClientData.TabIndex = 1;
             // 
             // tabPerson
@@ -291,7 +291,7 @@
             this.tabPerson.Location = new System.Drawing.Point(4, 25);
             this.tabPerson.Name = "tabPerson";
             this.tabPerson.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPerson.Size = new System.Drawing.Size(824, 275);
+            this.tabPerson.Size = new System.Drawing.Size(845, 244);
             this.tabPerson.TabIndex = 0;
             this.tabPerson.Text = "Физическо лице";
             this.tabPerson.UseVisualStyleBackColor = true;
@@ -466,7 +466,7 @@
             this.tabFirm.Location = new System.Drawing.Point(4, 25);
             this.tabFirm.Name = "tabFirm";
             this.tabFirm.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFirm.Size = new System.Drawing.Size(824, 275);
+            this.tabFirm.Size = new System.Drawing.Size(845, 243);
             this.tabFirm.TabIndex = 1;
             this.tabFirm.Text = "Юридическо лице";
             this.tabFirm.UseVisualStyleBackColor = true;
@@ -587,7 +587,7 @@
             this.tabAddress.Location = new System.Drawing.Point(4, 25);
             this.tabAddress.Name = "tabAddress";
             this.tabAddress.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAddress.Size = new System.Drawing.Size(845, 300);
+            this.tabAddress.Size = new System.Drawing.Size(845, 243);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Адрес";
             this.tabAddress.UseVisualStyleBackColor = true;
@@ -867,7 +867,7 @@
             this.tabAttorneys.Location = new System.Drawing.Point(4, 25);
             this.tabAttorneys.Name = "tabAttorneys";
             this.tabAttorneys.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttorneys.Size = new System.Drawing.Size(824, 275);
+            this.tabAttorneys.Size = new System.Drawing.Size(845, 244);
             this.tabAttorneys.TabIndex = 3;
             this.tabAttorneys.Text = "Пълномощници";
             this.tabAttorneys.UseVisualStyleBackColor = true;
@@ -972,7 +972,7 @@
             this.tabBankAccounts.Location = new System.Drawing.Point(4, 25);
             this.tabBankAccounts.Name = "tabBankAccounts";
             this.tabBankAccounts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBankAccounts.Size = new System.Drawing.Size(824, 275);
+            this.tabBankAccounts.Size = new System.Drawing.Size(845, 244);
             this.tabBankAccounts.TabIndex = 4;
             this.tabBankAccounts.Text = "Банкови сметки";
             this.tabBankAccounts.UseVisualStyleBackColor = true;
@@ -1184,7 +1184,7 @@
             this.tabExtraData.Location = new System.Drawing.Point(4, 25);
             this.tabExtraData.Name = "tabExtraData";
             this.tabExtraData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExtraData.Size = new System.Drawing.Size(824, 275);
+            this.tabExtraData.Size = new System.Drawing.Size(845, 244);
             this.tabExtraData.TabIndex = 5;
             this.tabExtraData.Text = "Допълнителни данни";
             this.tabExtraData.UseVisualStyleBackColor = true;
@@ -1293,7 +1293,7 @@
             this.tabAttorney.Location = new System.Drawing.Point(4, 25);
             this.tabAttorney.Name = "tabAttorney";
             this.tabAttorney.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttorney.Size = new System.Drawing.Size(824, 275);
+            this.tabAttorney.Size = new System.Drawing.Size(845, 244);
             this.tabAttorney.TabIndex = 6;
             this.tabAttorney.Text = "Пълномощник";
             this.tabAttorney.UseVisualStyleBackColor = true;
@@ -1406,6 +1406,7 @@
             this.comboTypePerson.Name = "comboTypePerson";
             this.comboTypePerson.Size = new System.Drawing.Size(360, 24);
             this.comboTypePerson.TabIndex = 3;
+            this.comboTypePerson.SelectedIndexChanged += new System.EventHandler(this.comboTypePerson_SelectedIndexChanged);
             // 
             // comboEmployee
             // 
@@ -1435,6 +1436,17 @@
             this.buttonClientDelete.TabIndex = 2;
             this.buttonClientDelete.Text = "ИЗТРИЙ";
             this.buttonClientDelete.UseVisualStyleBackColor = false;
+            // 
+            // buttonClientSave
+            // 
+            this.buttonClientSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonClientSave.Location = new System.Drawing.Point(572, 75);
+            this.buttonClientSave.Name = "buttonClientSave";
+            this.buttonClientSave.Size = new System.Drawing.Size(100, 47);
+            this.buttonClientSave.TabIndex = 2;
+            this.buttonClientSave.Text = "ЗАПАЗИ";
+            this.buttonClientSave.UseVisualStyleBackColor = true;
+            this.buttonClientSave.Click += new System.EventHandler(this.buttonClientSave_Click);
             // 
             // btnClientSearch
             // 
@@ -1533,17 +1545,6 @@
             this.labelId.Size = new System.Drawing.Size(75, 16);
             this.labelId.TabIndex = 0;
             this.labelId.Text = "ЕГН / ЕИК";
-            // 
-            // buttonClientSave
-            // 
-            this.buttonClientSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonClientSave.Location = new System.Drawing.Point(572, 75);
-            this.buttonClientSave.Name = "buttonClientSave";
-            this.buttonClientSave.Size = new System.Drawing.Size(100, 47);
-            this.buttonClientSave.TabIndex = 2;
-            this.buttonClientSave.Text = "ЗАПАЗИ";
-            this.buttonClientSave.UseVisualStyleBackColor = true;
-            this.buttonClientSave.Click += new System.EventHandler(this.btnClientSearch_Click);
             // 
             // InvestorCreate
             // 

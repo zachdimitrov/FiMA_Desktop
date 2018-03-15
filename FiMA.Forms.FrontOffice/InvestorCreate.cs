@@ -29,7 +29,6 @@ namespace FiMA.Forms.FrontOffice
             this._townsRepo = townsRepo;
             this._typesRepo = typesRepo;
             this._municRepo = municRepo;
-            this.model = new INVESTORS_FUNDS();
 
             InitializeComponent();
         }
@@ -39,19 +38,7 @@ namespace FiMA.Forms.FrontOffice
         /// </summary>
         private void InvestorCreate_Load(object sender, System.EventArgs e)
         {
-            this.comboTypePerson.DataSource = _typesRepo.GetAll<string>(null, x => x.TYPE);
-            this.comboEmployee.DataSource = new List<string>() { "СЛУЖИТЕЛ", "ПЪЛНОМОЩНИК", "НЕПРИЛОЖИМО" };
-            this.comboRegisterCd.DataSource = new List<string>() { "ДА", "НЕ" };
-            this.comboDds.DataSource = new List<string>() { "ДА", "НЕ" };
-            this.comboMailCountry.DataSource = _countriesRepo.GetAll<string>(null, x=>x.COUNTRY);
-            this.comboPersCountry.DataSource = _countriesRepo.GetAll<string>(null, x=>x.COUNTRY);
-            this.comboMailTown.DataSource = _townsRepo.GetAll<string>(null, x=>x.TOWNNAME);
-            this.comboPersTown.DataSource = _townsRepo.GetAll<string>(null, x=>x.TOWNNAME);
-            this.comboPersMunic.DataSource = _municRepo.GetAll<string>(null, x=>x.MUNICIPALITY1);
-            this.comboMailMunic.DataSource = _municRepo.GetAll<string>(null, x=>x.MUNICIPALITY1);
-
-            this.buttonClientDelete.Visible = false;
-            this.buttonClientSave.Visible = false;
+            this.loadInitialForm();
         }
 
         private void btnClientSearch_Click(object sender, System.EventArgs e)
@@ -61,18 +48,21 @@ namespace FiMA.Forms.FrontOffice
             if (idText.Length > 10 || 1 > idText.Length)
             {
                 MessageBox.Show("Не ста въвели правилно ЕГН/БУЛСТАТ!");
+                return;
             }
 
             // check if Type Person selected
             if (this.comboTypePerson.SelectedIndex <= -1)
             {
                 MessageBox.Show("Не е избран тип лице!");
+                return;
             }
 
             // check if Employee or Attorney selected
             if (this.comboEmployee.SelectedIndex <= -1)
             {
                 MessageBox.Show("Не сте избрали СЛУЖИТЕЛ/ПЪЛНОМОЩНИК!");
+                return;
             }
 
             // find all occurancies and load to table, show a message that record exist
@@ -92,6 +82,12 @@ namespace FiMA.Forms.FrontOffice
             {
                 MessageBox.Show("Клиентът вече съществува и няма да бъде създаден!");
             }
+            else
+            {
+                MessageBox.Show("Не е открит клиент с такова ЕГН или ЕИК. Може да запишете като нов клиент!");
+                this.loadInitialForm();
+                this.buttonClientSave.Visible = true;
+            }
 
             this.dataGrid.DataSource = dataSource;
         }
@@ -108,13 +104,23 @@ namespace FiMA.Forms.FrontOffice
             }
         }
 
+        private void buttonClientSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Takes all information about selected client and populates fields of form
+        /// </summary>
         private void PopulateForm(INVESTORS_FUNDS model)
         {
             // initial info
+            this.textId.Text = model.PERSONALID_BULSTAT;
             this.comboTypePerson.SelectedIndex = comboTypePerson.FindStringExact(model.TYPE_PERSON);
             this.comboEmployee.SelectedIndex = comboEmployee.FindStringExact(model.EMPLOYEE_AUTHORISED);
             this.comboRegisterCd.SelectedIndex = comboRegisterCd.FindStringExact(model.CD_REG);
-            this.comboDds.SelectedIndex = comboDds.FindStringExact(model.DDS_REGISTERED);
+            this.tеxtStatus.Text = model.CL_STATUS;
+            this.textClientId.Text = model.CLIENTID_STRING;
 
             // address
             this.comboMailCountry.SelectedIndex = comboMailCountry.FindStringExact(model.COUNTRY_ADDRESS_ID);
@@ -131,10 +137,21 @@ namespace FiMA.Forms.FrontOffice
             this.textPersApt.Text = model.FLAT;
             this.textPersFloor.Text = model.FLOOR1;
 
-            this.textId.Text = model.PERSONALID_BULSTAT;
-            this.textClientId.Text = model.CLIENTID_STRING;
+            // person
             this.textFirstName.Text = model.FIRSTNAME;
+            this.textMiddleName.Text = model.SECONDNAME;
             this.textFamilyName.Text = model.LASTNAME;
+
+            this.dateTimeBirthDate.Value = this.normalizeDate(model.CLIENT_BIRTHDATE);
+            this.textPassportNumber.Text = model.PERSONAL_ID;
+            this.dateTimePassportIssued.Value = this.normalizeDate(model.PERSONAL_ID_DATE);
+            this.textPassportIssued.Text = model.PERSONAL_ID_ISSUED_BY;
+
+            // company
+            this.textCompanyName.Text = model.FULL_NAME;
+            this.textCompanyTaxId.Text = model.ID_NUMBER_TAX_ID;
+            this.comboDds.SelectedIndex = comboDds.FindStringExact(model.DDS_REGISTERED);
+            this.comboOrgType.SelectedIndex = comboOrgType.FindStringExact(model.TYPE_ORGANIZATION);
 
             // bank accounts
             this.textIban1.Text = model.IBAN1;
@@ -149,12 +166,96 @@ namespace FiMA.Forms.FrontOffice
             this.textBicCode3.Text = model.BIC3;
             this.textBankName3.Text = model.BANK3;
 
+            // other data
+            this.textEmail.Text = model.E_MAIL;
+            this.textPhone.Text = model.TEL_FIXED;
+            this.textMobile.Text = model.TEL_MOBILE;
+            this.textGlobalIdCd.Text = model.CD_GLOBID.ToString();
+            this.textBicCodeCd.Text = model.CD_BIC;
+
+            // attorney data
+            this.textAttorneyType.Text = model.AUTHORISED_TYPE;
+            this.textAttorneyDoc.Text = model.AUTHORISED_DOC;
+            this.dateTimeAttorney.Value = this.normalizeDate(model.AUTHORISED_DATE);
+            this.textAttorneyNotary.Text = model.AUTH_NOTARY;
+
+            // show hidden buttons
             this.buttonClientDelete.Visible = true;
             this.buttonClientSave.Visible = true;
-            this.buttonClientSave.Text = "Обнови";
+
+            // show client number and status if existing
+            this.labelClientId.Visible = true;
+            this.textClientId.Visible = true;
+
+            this.labelStatus.Visible = true;
+            this.tеxtStatus.Visible = true;
+
+            this.buttonClientSave.Text = "ОБНОВИ";
+
+            this.hideTabsForPersonType();
         }
 
-        // hide tabs based on person type
-        // show client number and status if existing
+        private void comboTypePerson_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.hideTabsForPersonType();
+        }
+
+        /// <summary>
+        /// Load form with initial settings and hidden buttons
+        /// </summary>
+        private void loadInitialForm()
+        {
+            this.model = new INVESTORS_FUNDS();
+
+            this.comboTypePerson.DataSource = _typesRepo.GetAll<string>(null, x => x.TYPE);
+            this.comboEmployee.DataSource = new List<string>() { "СЛУЖИТЕЛ", "ПЪЛНОМОЩНИК", "НЕПРИЛОЖИМО" };
+            this.comboRegisterCd.DataSource = new List<string>() { "ДА", "НЕ" };
+            this.comboDds.DataSource = new List<string>() { "ДА", "НЕ" };
+            this.comboMailCountry.DataSource = _countriesRepo.GetAll<string>(null, x => x.COUNTRY);
+            this.comboPersCountry.DataSource = _countriesRepo.GetAll<string>(null, x => x.COUNTRY);
+            this.comboMailTown.DataSource = _townsRepo.GetAll<string>(null, x => x.TOWNNAME);
+            this.comboPersTown.DataSource = _townsRepo.GetAll<string>(null, x => x.TOWNNAME);
+            this.comboPersMunic.DataSource = _municRepo.GetAll<string>(null, x => x.MUNICIPALITY1);
+            this.comboMailMunic.DataSource = _municRepo.GetAll<string>(null, x => x.MUNICIPALITY1);
+
+            this.buttonClientDelete.Visible = false;
+            this.buttonClientSave.Visible = false;
+
+            this.labelClientId.Visible = false;
+            this.textClientId.Visible = false;
+
+            this.labelStatus.Visible = false;
+            this.tеxtStatus.Visible = false;
+        }
+
+        /// <summary>
+        /// Hide and disable unused tabs when type of client is changed
+        /// </summary>
+        private void hideTabsForPersonType()
+        {
+            ((Control)this.tabFirm).Enabled = true;
+            ((Control)this.tabPerson).Enabled = true;
+
+            var typePerson = this.comboTypePerson.Text.ToLower();
+            if (typePerson.IndexOf("физическо") >= 0)
+            {
+                ((Control)this.tabFirm).Enabled = false;
+                this.tabControlClientData.SelectedTab = this.tabPerson;
+            }
+            else
+            {
+                ((Control)this.tabPerson).Enabled = false;
+                this.tabControlClientData.SelectedTab = this.tabFirm;
+            }
+        }
+
+        /// <summary>
+        /// Convert string date from DB to DateTime object or return today's date
+        /// </summary>
+        private DateTime normalizeDate(string date)
+        {
+            DateTime dateToConvert;
+            return (date != "" && DateTime.TryParse(date, out dateToConvert))? dateToConvert:DateTime.Now;
+        }
     }
 }
