@@ -16,6 +16,7 @@ namespace FiMA.Forms.FrontOffice
         private IRepository<MUNICIPALITY> _municRepo;
         private IUnitOfWork _uow;
         private INVESTORS_FUNDS model;
+        private bool newClient;
 
         public InvestorCreate(
             IRepository<INVESTORS_FUNDS> investorsFundsRepo,
@@ -42,13 +43,13 @@ namespace FiMA.Forms.FrontOffice
         /// </summary>
         private void InvestorCreate_Load(object sender, System.EventArgs e)
         {
-            this.loadInitialForm();
+            this.LoadInitialForm();
         }
 
         private void btnClientSearch_Click(object sender, System.EventArgs e)
         {
             var idText = this.textId.Text;
-            if(!this.checkPrimaryFields(idText))
+            if(!this.CheckPrimaryFields(idText))
             {
                 return;
             }
@@ -69,18 +70,71 @@ namespace FiMA.Forms.FrontOffice
             if (dataSource.Count() > 0)
             {
                 MessageBox.Show("Клиентът вече съществува и няма да бъде създаден!");
+                this.newClient = false;
             }
             else
             {
                 MessageBox.Show("Не е открит клиент с такова ЕГН или ЕИК. Може да запишете като нов клиент!");
-                this.loadInitialForm();
+                this.LoadInitialForm();
                 this.buttonClientSave.Visible = true;
+                this.newClient = true;
             }
 
             this.dataGrid.DataSource = dataSource;
         }
 
-        private bool checkPrimaryFields(string idText)
+        /// <summary>
+        /// when row clicked load data to fields
+        /// </summary>
+        private void dataGrid_DoubleClick(object sender, System.EventArgs e)
+        {
+            if (dataGrid.CurrentRow.Index != -1)
+            {
+                int id = (int)dataGrid.CurrentRow.Cells["columnId"].Value;
+                model = this._investorsFundsRepo.GetById(id);
+
+                this.PopulateFormFromModel(model);
+            }
+        }
+
+        private void buttonClientSave_Click(object sender, EventArgs e)
+        {
+            var idText = this.textId.Text;
+            if (!this.CheckPrimaryFields(idText))
+            {
+                return;
+            }
+
+            model = this.CreateModelFromForm();
+
+            if (this.newClient == true)
+            {
+                this._investorsFundsRepo.Add(model);
+            }
+            else
+            {
+                this._investorsFundsRepo.Update(model);
+            }
+
+            try
+            {
+                this._uow.Commit();
+                MessageBox.Show("Записът е успешен!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неъспешен запис! Опитайте отново!" + "\n" + ex.Message);
+            }
+        }
+
+        private void comboTypePerson_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.ChangeFormForPersonType();
+        }
+        #endregion
+
+        #region Custom helper methods
+        private bool CheckPrimaryFields(string idText)
         {
             var result = true;
             // check if Id is correct
@@ -108,57 +162,6 @@ namespace FiMA.Forms.FrontOffice
         }
 
         /// <summary>
-        /// when row clicked load data to fields
-        /// </summary>
-        private void dataGrid_DoubleClick(object sender, System.EventArgs e)
-        {
-            if (dataGrid.CurrentRow.Index != -1)
-            {
-                int id = (int)dataGrid.CurrentRow.Cells["columnId"].Value;
-                model = this._investorsFundsRepo.GetById(id);
-
-                this.PopulateFormFromModel(model);
-            }
-        }
-
-        private void buttonClientSave_Click(object sender, EventArgs e)
-        {
-            var idText = this.textId.Text;
-            if (!this.checkPrimaryFields(idText))
-            {
-                return;
-            }
-
-            model = this.CreateModelFromForm();
-
-            if (this.buttonClientSave.Text == "ЗАПАЗИ")
-            {
-                this._investorsFundsRepo.Add(model);
-            }
-            else
-            {
-                this._investorsFundsRepo.Update(model);
-            }
-
-            try
-            {
-                this._uow.Commit();
-                MessageBox.Show("Записът е успешен!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Неъспешен запис! Опитайте отново!" + "\n" + ex.Message);
-            }
-        }
-
-        private void comboTypePerson_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.hideTabsForPersonType();
-        }
-        #endregion
-
-        #region Custom helper methods
-        /// <summary>
         /// Takes all information about client from form and creates data model
         /// </summary>
         private INVESTORS_FUNDS CreateModelFromForm()
@@ -170,10 +173,16 @@ namespace FiMA.Forms.FrontOffice
             md.TYPE_PERSON = this.comboTypePerson.Text;
             md.EMPLOYEE_AUTHORISED = this.comboEmployee.Text;
             md.CD_REG = this.comboRegisterCd.Text;
-            md.CL_STATUS = this.tеxtStatus.Text;
 
             // create this here - do not use field!
-            md.CLIENTID_STRING = this.textClientId.Text;
+            if (this.newClient)
+            {
+                md.CLIENTID_STRING = "noClString"; // TODO:
+            }
+            else
+            {
+                md.CLIENTID_STRING = this.textClientId.Text;
+            }
 
             // address
             md.COUNTRY_ADDRESS_ID = this.comboMailCountry.Text;
@@ -230,6 +239,10 @@ namespace FiMA.Forms.FrontOffice
             md.AUTHORISED_DOC = this.textAttorneyDoc.Text;
             md.AUTHORISED_DATE = this.dateTimeAttorney.Text;
             md.AUTH_NOTARY = this.textAttorneyNotary.Text;
+
+            // select authorised
+
+            md.CL_STATUS = "OK";
 
             return md;
         }
@@ -317,13 +330,13 @@ namespace FiMA.Forms.FrontOffice
 
             this.buttonClientSave.Text = "ОБНОВИ";
 
-            this.hideTabsForPersonType();
+            this.ChangeFormForPersonType();
         }
 
         /// <summary>
         /// Load form with initial settings and hidden buttons
         /// </summary>
-        private void loadInitialForm()
+        private void LoadInitialForm()
         {
             this.model = new INVESTORS_FUNDS();
 
@@ -351,7 +364,7 @@ namespace FiMA.Forms.FrontOffice
         /// <summary>
         /// Hide and disable unused tabs when type of client is changed
         /// </summary>
-        private void hideTabsForPersonType()
+        private void ChangeFormForPersonType()
         {
             ((Control)this.tabFirm).Enabled = true;
             ((Control)this.tabPerson).Enabled = true;
@@ -367,6 +380,19 @@ namespace FiMA.Forms.FrontOffice
                 ((Control)this.tabPerson).Enabled = false;
                 this.tabControlClientData.SelectedTab = this.tabFirm;
             }
+
+            if (typePerson.IndexOf("българско") >= 0)
+            {
+                this.comboMailCountry.SelectedIndex = comboMailCountry.FindStringExact("БЪЛГАРИЯ");
+                ((Control)this.comboMailCountry).Enabled = false;
+                this.comboPersCountry.SelectedIndex = comboPersCountry.FindStringExact("БЪЛГАРИЯ");
+                ((Control)this.comboPersCountry).Enabled = false;
+            }
+            else
+            {
+                ((Control)this.comboMailCountry).Enabled = true;
+                ((Control)this.comboPersCountry).Enabled = true;
+            }
         }
 
         /// <summary>
@@ -377,6 +403,12 @@ namespace FiMA.Forms.FrontOffice
             DateTime dateToConvert;
             return (date != "" && DateTime.TryParse(date, out dateToConvert))? dateToConvert:DateTime.Now;
         }
+
+        private string CreateClientIdString(string id)
+        {
+            return "";
+        }
+
         #endregion
     }
 }
