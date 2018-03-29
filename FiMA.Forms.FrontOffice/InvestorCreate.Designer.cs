@@ -466,7 +466,7 @@
             this.tabFirm.Location = new System.Drawing.Point(4, 25);
             this.tabFirm.Name = "tabFirm";
             this.tabFirm.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFirm.Size = new System.Drawing.Size(845, 244);
+            this.tabFirm.Size = new System.Drawing.Size(842, 281);
             this.tabFirm.TabIndex = 1;
             this.tabFirm.Text = "Юридическо лице";
             this.tabFirm.UseVisualStyleBackColor = true;
@@ -587,7 +587,7 @@
             this.tabAddress.Location = new System.Drawing.Point(4, 25);
             this.tabAddress.Name = "tabAddress";
             this.tabAddress.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAddress.Size = new System.Drawing.Size(845, 244);
+            this.tabAddress.Size = new System.Drawing.Size(842, 281);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Адрес";
             this.tabAddress.UseVisualStyleBackColor = true;
@@ -867,7 +867,7 @@
             this.tabAttorneys.Location = new System.Drawing.Point(4, 25);
             this.tabAttorneys.Name = "tabAttorneys";
             this.tabAttorneys.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttorneys.Size = new System.Drawing.Size(845, 244);
+            this.tabAttorneys.Size = new System.Drawing.Size(842, 281);
             this.tabAttorneys.TabIndex = 3;
             this.tabAttorneys.Text = "Пълномощници";
             this.tabAttorneys.UseVisualStyleBackColor = true;
@@ -972,7 +972,7 @@
             this.tabBankAccounts.Location = new System.Drawing.Point(4, 25);
             this.tabBankAccounts.Name = "tabBankAccounts";
             this.tabBankAccounts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBankAccounts.Size = new System.Drawing.Size(845, 244);
+            this.tabBankAccounts.Size = new System.Drawing.Size(842, 281);
             this.tabBankAccounts.TabIndex = 4;
             this.tabBankAccounts.Text = "Банкови сметки";
             this.tabBankAccounts.UseVisualStyleBackColor = true;
@@ -1184,7 +1184,7 @@
             this.tabExtraData.Location = new System.Drawing.Point(4, 25);
             this.tabExtraData.Name = "tabExtraData";
             this.tabExtraData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabExtraData.Size = new System.Drawing.Size(845, 244);
+            this.tabExtraData.Size = new System.Drawing.Size(842, 281);
             this.tabExtraData.TabIndex = 5;
             this.tabExtraData.Text = "Допълнителни данни";
             this.tabExtraData.UseVisualStyleBackColor = true;
@@ -1293,7 +1293,7 @@
             this.tabAttorney.Location = new System.Drawing.Point(4, 25);
             this.tabAttorney.Name = "tabAttorney";
             this.tabAttorney.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttorney.Size = new System.Drawing.Size(845, 244);
+            this.tabAttorney.Size = new System.Drawing.Size(842, 281);
             this.tabAttorney.TabIndex = 6;
             this.tabAttorney.Text = "Пълномощник";
             this.tabAttorney.UseVisualStyleBackColor = true;
@@ -1554,7 +1554,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InvestorCreate";
-            this.Text = "Front office - Регистрация на клиент";
+            this.Text = "Регистрация на клиент";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InvestorCreate_FormClosing);
             this.Load += new System.EventHandler(this.InvestorCreate_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
