@@ -46,6 +46,15 @@ namespace FiMA.Forms.FrontOffice
             this.LoadInitialForm();
         }
 
+        private void InvestorCreate_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+        }
+
         private void btnClientSearch_Click(object sender, System.EventArgs e)
         {
             var idText = this.textId.Text;
@@ -123,7 +132,7 @@ namespace FiMA.Forms.FrontOffice
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Неъспешен запис! Опитайте отново!" + "\n" + ex.Message);
+                MessageBox.Show("Неуспешен запис! Опитайте отново!" + "\n" + ex.Message);
             }
         }
 
@@ -168,21 +177,23 @@ namespace FiMA.Forms.FrontOffice
         {
             var md = new INVESTORS_FUNDS();
 
-            md.CLIENTID = this._investorsFundsRepo.GetAll<int>(null, x => x.CLIENTID).Max() + 1;
-            md.PERSONALID_BULSTAT = this.textId.Text;
-            md.TYPE_PERSON = this.comboTypePerson.Text;
-            md.EMPLOYEE_AUTHORISED = this.comboEmployee.Text;
-            md.CD_REG = this.comboRegisterCd.Text;
+            // TODO: set user modified - use identity
 
-            // create this here - do not use field!
+            // TODO: create this here - do not use field!
             if (this.newClient)
             {
-                md.CLIENTID_STRING = "noClString"; // TODO:
+                md.CLIENTID_STRING = "noClString";
             }
             else
             {
                 md.CLIENTID_STRING = this.textClientId.Text;
             }
+
+            md.CLIENTID = this._investorsFundsRepo.GetAll<int>(null, x => x.CLIENTID).Max() + 1;
+            md.PERSONALID_BULSTAT = this.textId.Text;
+            md.TYPE_PERSON = this.comboTypePerson.Text;
+            md.EMPLOYEE_AUTHORISED = this.comboEmployee.Text;
+            md.CD_REG = this.comboRegisterCd.Text;
 
             // address
             md.COUNTRY_ADDRESS_ID = this.comboMailCountry.Text;

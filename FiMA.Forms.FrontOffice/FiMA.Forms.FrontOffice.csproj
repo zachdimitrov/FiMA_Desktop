@@ -56,16 +56,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormsModule.cs" />
     <Compile Include="InvestorCreate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InvestorCreate.Designer.cs">
       <DependentUpon>InvestorCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="MasterFrontOffice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterFrontOffice.Designer.cs">
+      <DependentUpon>MasterFrontOffice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="InvestorCreate.resx">
       <DependentUpon>InvestorCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterFrontOffice.resx">
+      <DependentUpon>MasterFrontOffice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

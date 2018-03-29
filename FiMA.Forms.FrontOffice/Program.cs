@@ -1,12 +1,6 @@
-﻿using FiMA.Data;
-using FiMA.Data.Common;
-using FiMA.Data.Common.Contracts;
-using Ninject;
+﻿using Ninject;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FiMA.Forms.FrontOffice
@@ -20,13 +14,11 @@ namespace FiMA.Forms.FrontOffice
         static void Main()
         {
             var kernel = new StandardKernel();
-            kernel.Bind<DbContext>().To<KpEntities>().InSingletonScope();
-            kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
-            kernel.Bind<IUnitOfWork>().To<EfUnitOfWork>();
+            kernel.Load(new FormsModule());
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(kernel.Get<InvestorCreate>());
+            Application.Run(kernel.Get<MasterFrontOffice>());
         }
     }
 }
