@@ -24,6 +24,7 @@ namespace FiMA.Forms.FrontOffice
         private void buttonInvestorCreate_Click(object sender, EventArgs e)
         {
             Form.MdiParent = this;
+            Form.WindowState = FormWindowState.Maximized;
             Form.Show();
         }
     }
